@@ -1,0 +1,52 @@
+# EditorConfig est utilisé pour maintenir un style de code cohérent entre les éditeurs/IDE
+root = true
+
+# Paramètres globaux
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Fichiers Java
+[*.java]
+indent_size = 4
+max_line_length = 120
+continuation_indent_size = 8
+
+# Fichiers XML (Spring config, pom.xml, etc.)
+[*.xml]
+indent_size = 2
+
+# Fichiers YAML (application.yml, etc.)
+[*.yml]
+indent_size = 2
+indent_style = space
+
+# Fichiers Markdown, JSON, etc.
+[*.md]
+trim_trailing_whitespace = false
+
+[*.json]
+indent_size = 2
+
+# Fichiers de configuration
+[*.properties]
+indent_style = space
+
+# Scripts shell
+[*.sh]
+end_of_line = lf
+insert_final_newline = true
+
+# Assure que toutes les fins de ligne sont en LF ✅
+
+# Utilise UTF-8 partout ✅
+
+# Supprime les espaces inutiles en fin de ligne ✅
+
+# Force l’utilisation des espaces (et pas de tabulations) ✅
+
+# Applique une indentation adaptée pour Java, XML, YAML, JSON, etc.

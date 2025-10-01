@@ -1,0 +1,147 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 70%;
+  max-height: 90%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding: 1rem 1rem 0 1rem;
+  width: 50%;
+}
+
+.input-label {
+  display: flex;
+  color: grey;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  margin-right: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-field-error {
+  border-color: #f44336; /* Red color for error */
+}
+
+.error-message {
+  color: #f44336; /* Red color for error text */
+  font-size: 0.875em; /* Smaller font size for error text */
+  margin-top: 5px;
+}
+
+.addButton {
+  display: flex;
+  background-color: darkcyan;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addButton:hover {
+  background-color: #017373; /* Darker Green */
+}
+
+// Définir les variables pour les couleurs
+$blue: #3b82f6;
+$blue-hover: #2563eb;
+$green: #10b981;
+$green-hover: #059669;
+
+// Définir un mixin pour le style de bouton commun
+@mixin button-style {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  color: white; /* text-white */
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: background-color 0.3s;
+}
+
+// Style pour les boutons Next et Prev
+.next-button, .prev-button {
+  @include button-style;
+  background-color: $blue;
+
+  &:hover {
+    background-color: $blue-hover;
+  }
+}
+
+// Style pour le bouton Submit
+.submit-button {
+  @include button-style;
+  background-color: $green;
+
+  &:hover {
+    background-color: $green-hover;
+  }
+}
+
+
+/* Add more styles as needed */

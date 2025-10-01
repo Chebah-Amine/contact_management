@@ -1,0 +1,13 @@
+version: '2.17'
+
+services:
+  fsr-app-container:
+    container_name: fsr-app-container
+    build: .
+    user : 1000:1000
+    ports:
+      - "3000:3000"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ../:/var/www/html
