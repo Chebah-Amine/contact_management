@@ -1,10 +1,10 @@
-package com.fsrapi.app;
+package com.fsrapi.app.configuration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AppApplicationTests {
+class AppApplicationTest {
 
 	@Test
 	void contextLoads() {
