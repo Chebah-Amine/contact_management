@@ -13,15 +13,10 @@ logs:
 	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} logs -f
 
 exec:
-	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} exec app bash
+	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} exec app sh
 
 db:
-	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} exec database mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DB"
-
-
-restart:
-	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} down
-	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} up --build -d
+	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} exec database mysql -u ${MYSQL_USER} -p ${MYSQL_PASSWORD} ${MYSQL_DB}
 
 test:
 	docker compose ${ENV_OPTION} -f ${DOCKER_PATH} exec app ./mvnw test
