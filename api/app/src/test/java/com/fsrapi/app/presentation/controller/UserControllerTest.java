@@ -37,6 +37,7 @@ public class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @MockitoBean
+    // @Qualifier("name") if there is more than on bean
     private RegisterUserUseCase registerUserUseCase;
 
     @BeforeEach

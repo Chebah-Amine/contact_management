@@ -1,37 +1,41 @@
 services:
   app:
     container_name: cm-api
-    env_file:
-      - "../.env"
     build:
       context: ../
       dockerfile: ./docker/Dockerfile
     ports:
-      - "8085:8080" # mapper port local 8085 vers 8080 du conteneur
+      - "8085:8080"
     volumes:
-      - ../app:/api # hot reload
-    working_dir: /api
-    command: ./mvnw spring-boot:run
+      - ../app:/api
+      - maven-cache:/root/.m2
     environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/${MYSQL_DB}
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
-      - database
+      database:
+        condition: service_healthy
 
   database:
     image: mysql:8.0.33
     container_name: mysql-database
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DB}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - "3308:3306"
     volumes:
       - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   db-data:
+  maven-cache:
